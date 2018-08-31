@@ -4,7 +4,8 @@ var stopwatch = function stopwatch() {
 		minutes: 0,
 		seconds: 0,
 		cseconds: 0,
-		running: false
+		running: false,
+		start: -1
 	};
 	
 	var toggleButton;
@@ -17,6 +18,7 @@ var stopwatch = function stopwatch() {
 		time.seconds = 0;
 		time.cseconds = 0;
 		time.running = false;
+		time.start = -1;
 	}
 	
 	function initDisplay() {
@@ -68,15 +70,10 @@ var stopwatch = function stopwatch() {
 	}
 
 	function incTime() {
-		time.cseconds += 1;
-		if(time.cseconds === 100) {
-			time.seconds += 1;
-			time.cseconds = 0;
-		}
-		if(time.seconds === 60) {
-			time.minutes += 1;
-			time.seconds = 0;
-		}
+		var elapsed = Date.now() - time.start;
+		time.cseconds = Math.floor(elapsed / 10) % 100;
+		time.seconds = Math.floor(elapsed / 1000) % 60;
+		time.minutes = Math.floor(elapsed / (1000 * 60));
 		displayTime();
 	}
 
@@ -84,6 +81,7 @@ var stopwatch = function stopwatch() {
 		time.running = !time.running;
 		setToggleButton();
 		if(time.running) {
+			time.start = Date.now();
 			counter = setInterval(incTime, 10);
 		} else {
 			clearInterval(counter);
@@ -99,7 +97,7 @@ var stopwatch = function stopwatch() {
 }();
 
 stopwatch.init();
-document.addEventListener("keypress", function (e) {
+document.addEventListener("keydown", function (e) {
 	if (e.key === " ") {
 		stopwatch.toggle();
 	} else if (e.key === "Escape") {
