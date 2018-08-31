@@ -82,6 +82,9 @@ var stopwatch = function stopwatch() {
 		setToggleButton();
 		if(time.running) {
 			time.start = Date.now();
+			time.start -= (time.cseconds * 10) +
+						  (time.seconds * 1000) + 
+						  (time.minutes * 1000 * 60);
 			counter = setInterval(incTime, 10);
 		} else {
 			clearInterval(counter);
