@@ -99,7 +99,6 @@ var stopwatch = function stopwatch() {
 
 }();
 
-stopwatch.init();
 var keys = function() {
 
 	var pressed = false;
@@ -128,5 +127,6 @@ var keys = function() {
 	
 }();
 
+stopwatch.init();
 document.addEventListener("keydown", keys.press);
 document.addEventListener("keyup", keys.unpress);
