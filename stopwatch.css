@@ -1,0 +1,79 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
+div#header {
+	text-align: center;
+	margin: auto;
+	position: relative;
+	width: 75%;
+}
+
+h1 {
+	background: #ff0000;
+	font-size:3em;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #222;
+	border-radius: 5px;
+}
+
+div#timer {
+   display: flex;
+   justify-content: center; /* align horizontal */
+   align-items: center; /* align vertical */
+   background: -webkit-linear-gradient(bottom, #dddddd, #fdfdfd 175px);
+   background: -moz-linear-gradient(bottom, #dddddd, #fdfdfd 175px);
+   background: linear-gradient(bottom, #dddddd, #fdfdfd 175px);
+   margin: auto;
+   position: relative;
+   width: 75%;
+   min-height: 380px;
+   font-weight: bold;
+   font-size: 20em;
+   color: #222;
+   text-align: center;
+   text-decoration: none;
+   border-radius: 30px;
+   padding: 10px;
+   border: 10px solid #222;
+   border: inset 5px solid #ddd;
+}
+
+div#buttons {
+	margin: auto;
+	position: relative;
+	width: 75%;
+	padding: 30px;
+	text-align: center;
+}
+
+button {
+	font-family: Arial, sans-serif;
+	font-size: 5em;
+	border-radius: 30px;
+	border: 5px solid #222;
+	padding: 50px;
+	color: #000;
+	min-width: 300px;
+}
+
+button#toggle {
+	background: #00dd00;
+}
+
+button#toggle:hover {
+	background: #00ff00;
+}
+
+span#spacer {
+	min-width: 100px;
+}
+
+button#reset {
+	background: #dd0000;
+}
+
+button#reset:hover {
+	background: #ff0000;
+}
