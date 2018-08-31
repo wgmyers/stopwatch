@@ -105,6 +105,7 @@ var keys = function() {
 	var pressed = false;
 
 	function press(e) {
+		e.preventDefault();
 		if(!pressed) {
 			pressed = true;
 			if (e.key === " ") {
@@ -116,6 +117,7 @@ var keys = function() {
 	}
 
 	function unpress(e) {
+		e.preventDefault();
 		pressed = false;
 	}
 	
