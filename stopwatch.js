@@ -97,10 +97,31 @@ var stopwatch = function stopwatch() {
 }();
 
 stopwatch.init();
-document.addEventListener("keydown", function (e) {
-	if (e.key === " ") {
-		stopwatch.toggle();
-	} else if (e.key === "Escape") {
-		stopwatch.reset();
+var keys = function() {
+
+	var pressed = false;
+
+	function press(e) {
+		if(!pressed) {
+			pressed = true;
+			if (e.key === " ") {
+				stopwatch.toggle();
+			} else if (e.key === "Escape") {
+				stopwatch.reset();
+			}
+		}
 	}
-});
+
+	function unpress(e) {
+		pressed = false;
+	}
+	
+	return {
+		press: press,
+		unpress: unpress
+	};
+	
+}();
+
+document.addEventListener("keydown", keys.press);
+document.addEventListener("keyup", keys.unpress);
