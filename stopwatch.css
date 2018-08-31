@@ -1,5 +1,5 @@
 body {
-	font-family: Arial, sans-serif;
+   font-family: Arial, sans-serif;
 }
 
 div#header {
@@ -19,19 +19,19 @@ h1 {
 }
 
 div#timer {
+   font-family: "Inconsolata", monospace;
    display: flex;
    justify-content: center; /* align horizontal */
    align-items: center; /* align vertical */
-   background: -webkit-linear-gradient(bottom, #dddddd, #fdfdfd 175px);
-   background: -moz-linear-gradient(bottom, #dddddd, #fdfdfd 175px);
-   background: linear-gradient(bottom, #dddddd, #fdfdfd 175px);
+   background: -webkit-linear-gradient(bottom, #101010, #303030 175px);
+   background: -moz-linear-gradient(bottom, #101010, #303030 175px);
+   background: linear-gradient(bottom, #101010, #303030 175px);
    margin: auto;
    position: relative;
    width: 75%;
    min-height: 380px;
-   font-weight: bold;
    font-size: 20em;
-   color: #222;
+   color: #00dd00;
    text-align: center;
    text-decoration: none;
    border-radius: 30px;
