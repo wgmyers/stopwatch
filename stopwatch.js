@@ -1,18 +1,20 @@
-var stopwatch = function stopwatch() {
+'use strict';
 
-	var time = {
+const stopwatch = function stopwatch() {
+
+	const time = {
 		minutes: 0,
 		seconds: 0,
 		cseconds: 0,
 		running: false,
 		start: -1
 	};
-	
-	var toggleButton;
-	var resetButton;
-	var timeDisplay;
-	var counter;
-	
+
+	let toggleButton;
+	let resetButton;
+	let timeDisplay;
+	let counter;
+
 	function initTime() {
 		time.minutes = 0;
 		time.seconds = 0;
@@ -20,7 +22,7 @@ var stopwatch = function stopwatch() {
 		time.running = false;
 		time.start = -1;
 	}
-	
+
 	function initDisplay() {
 		timeDisplay = document.querySelector("#timer");
 		toggleButton = document.querySelector("#toggle");
@@ -28,18 +30,18 @@ var stopwatch = function stopwatch() {
 		setToggleButton();
 		displayTime();
 	}
-	
+
 	function initHandlers() {
 		toggleButton.addEventListener("click", toggle);
 		resetButton.addEventListener("click", reset);
 	}
-	
+
 	function init() {
 		initTime();
 		initDisplay();
 		initHandlers();
 	}
-	
+
 	function setToggleButton() {
 		if(time.running === false) {
 			toggleButton.textContent = "Start";
@@ -47,7 +49,7 @@ var stopwatch = function stopwatch() {
 			toggleButton.textContent = "Stop";
 		}
 	}
-	
+
 	function reset() {
 		if(time.running === true) {
 			toggle();
@@ -56,21 +58,21 @@ var stopwatch = function stopwatch() {
 		displayTime();
 		setToggleButton();
 	}
-	
+
 	function displayTime() {
-		var timeStr;
-		
-		timeStr = 
+		let timeStr;
+
+		timeStr =
 				  ("00" + time.minutes).slice(-2) + ":" +
-				  ("00" + time.seconds).slice(-2) + ":" + 
+				  ("00" + time.seconds).slice(-2) + ":" +
 				  ("00" + time.cseconds).slice(-2);
-				  
+
 		timeDisplay.textContent = timeStr;
-	
+
 	}
 
 	function incTime() {
-		var elapsed = Date.now() - time.start;
+		let elapsed = Date.now() - time.start;
 		time.cseconds = Math.floor(elapsed / 10) % 100;
 		time.seconds = Math.floor(elapsed / 1000) % 60;
 		time.minutes = Math.floor(elapsed / (1000 * 60));
@@ -83,7 +85,7 @@ var stopwatch = function stopwatch() {
 		if(time.running) {
 			time.start = Date.now();
 			time.start -= (time.cseconds * 10) +
-						  (time.seconds * 1000) + 
+						  (time.seconds * 1000) +
 						  (time.minutes * 1000 * 60);
 			counter = setInterval(incTime, 10);
 		} else {
@@ -99,9 +101,9 @@ var stopwatch = function stopwatch() {
 
 }();
 
-var keys = function() {
+const keys = function() {
 
-	var pressed = false;
+	let pressed = false;
 
 	function press(e) {
 		e.preventDefault();
@@ -119,12 +121,12 @@ var keys = function() {
 		e.preventDefault();
 		pressed = false;
 	}
-	
+
 	return {
 		press: press,
 		unpress: unpress
 	};
-	
+
 }();
 
 stopwatch.init();
